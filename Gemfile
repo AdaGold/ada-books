@@ -77,3 +77,27 @@ group :test do
   gem 'minitest-reporters'
 end
 
+
+group :development, :test do
+end
+
+group :development do
+end
+
+group :development do
+end
+
+group :test do
+end
+
+group :development, :test do
+end
+
+group :development do
+end
+
+group :development do
+end
+
+group :test do
+end
