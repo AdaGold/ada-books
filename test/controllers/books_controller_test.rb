@@ -9,9 +9,13 @@ describe BooksController do
   end
 
   describe "show" do
+    before do
+      @book = Book.create(title: "hello world")
+    end
+
     it "will get show for valid ids" do
       # Arrange
-      valid_book_id = 1
+      valid_book_id = @book.id
   
       # Act
       get "/books/#{valid_book_id}"
