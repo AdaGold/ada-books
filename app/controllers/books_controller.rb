@@ -28,5 +28,29 @@ class BooksController < ApplicationController
       return
     end
   end
+
+  def edit
+    @book = Book.find_by(id: params[:id])
+
+    if @book.nil?
+      head :not_found
+      return
+    end
+  end
+
+  def update
+    @book = Book.find_by(id: params[:id])
+    if @book.update(
+      author: params[:book][:author], 
+      title: params[:book][:title], 
+      description: params[:book][:description]
+    )
+      redirect_to books_path # go to the index so we can see the book in the list
+      return
+    else # save failed :(
+      render :edit # show the new book form view again
+      return
+    end
+  end
   
 end
