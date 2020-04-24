@@ -45,16 +45,19 @@ describe BooksController do
           description: 'A look at how to design object-oriented systems'
         }
       }
-  
+
       expect {
         post books_path, params: book_hash
       }.must_differ 'Book.count', 1
   
       must_respond_with  :redirect
       expect(Book.last.title).must_equal book_hash[:book][:title]
-    expect(Book.last.author).must_equal book_hash[:book][:author]
-    expect(Book.last.description).must_equal book_hash[:book][:description]
+      expect(Book.last.author).must_equal book_hash[:book][:author]
+      expect(Book.last.description).must_equal book_hash[:book][:description]
+    end
+
+    it "will not create a book with invalid params" do
+        # fill this in when we implement validations next week
     end
   end
-
 end

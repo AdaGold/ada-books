@@ -40,7 +40,10 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find_by(id: params[:id])
-    if @book.update(
+    if @book.nil?
+      head :not_found
+      return
+    elsif @book.update(
       author: params[:book][:author], 
       title: params[:book][:title], 
       description: params[:book][:description]
