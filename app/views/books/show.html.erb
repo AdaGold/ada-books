@@ -1,4 +1,8 @@
-<h1><%= @book.title %></h1>
-<h2>By: <%= @book.author %></h2>
+<div>
+  <h1><%= @book.title %></h1>
+  <h2>By: <%= @book.author %></h2> 
+  <%= link_to "Edit", edit_book_path(@book) %>
+</div>
+
 
 <p><%= link_to "Return to Book List", books_path %></p> 
