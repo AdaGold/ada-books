@@ -36,4 +36,25 @@ describe BooksController do
     end
   end
 
+  describe "create" do
+    it "can create a book" do
+      book_hash = {
+        book: {
+          title: "Practical Object Oriented Programming in Ruby",
+          author: "Sandi Metz",
+          description: 'A look at how to design object-oriented systems'
+        }
+      }
+  
+      expect {
+        post books_path, params: book_hash
+      }.must_differ 'Book.count', 1
+  
+      must_respond_with  :redirect
+      expect(Book.last.title).must_equal book_hash[:book][:title]
+    expect(Book.last.author).must_equal book_hash[:book][:author]
+    expect(Book.last.description).must_equal book_hash[:book][:description]
+    end
+  end
+
 end
