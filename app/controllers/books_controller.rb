@@ -12,4 +12,9 @@ class BooksController < ApplicationController
       return
     end
   end
+
+  def new
+    @book = Book.new
+  end
+  
 end
