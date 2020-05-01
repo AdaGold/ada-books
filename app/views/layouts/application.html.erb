@@ -12,6 +12,12 @@
     <h1>Welcome to Ada Books</h1>
   </header>
   <body>
+  <header>
+    <nav>
+      <a href="/books/new">New book</a>
+      <%= link_to "New Book", new_book_path %>
+    </nav>
+  </header>
     <%= yield %>
   </body>
   <footer>
