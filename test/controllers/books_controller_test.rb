@@ -5,6 +5,14 @@ describe BooksController do
     it "should get index" do
       get "/books"
       must_respond_with :success
+      # must_respond_with :ok
+      # must_respond_with :server_error
+      # must_respond_with :bad_request
+      # must_respond_with :not_found
+
+      # must_redirect_to "/books"
+
+
     end
   end
 
@@ -51,6 +59,7 @@ describe BooksController do
       }.must_differ 'Book.count', 1
   
       must_respond_with  :redirect
+      must_redirect_to root_path
       expect(Book.last.title).must_equal book_hash[:book][:title]
       expect(Book.last.author).must_equal book_hash[:book][:author]
       expect(Book.last.description).must_equal book_hash[:book][:description]
