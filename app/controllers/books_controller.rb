@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(author: params[:book][:author], title: params[:book][:title], description: params[:book][:description]) #instantiate a new book
     if @book.save # save returns true if the database insert succeeds
-      redirect_to books_path # go to the index so we can see the book in the list
+      redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
       render :new # show the new book form view again
