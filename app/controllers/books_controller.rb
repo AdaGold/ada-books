@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
   # in app/controllers/books_controller.rb
   def create
-    @book = Book.new(author: params[:book][:author], title: params[:book][:title], description: params[:book][:description]) #instantiate a new book
+    @book = Book.new(book_params) #instantiate a new book
     if @book.save # save returns true if the database insert succeeds
       redirect_to root_path # go to the index so we can see the book in the list
       return
@@ -43,11 +43,7 @@ class BooksController < ApplicationController
     if @book.nil?
       head :not_found
       return
-    elsif @book.update(
-      author: params[:book][:author], 
-      title: params[:book][:title], 
-      description: params[:book][:description]
-    )
+    elsif @book.update(book_params)
       redirect_to books_path # go to the index so we can see the book in the list
       return
     else # save failed :(
@@ -69,6 +65,12 @@ class BooksController < ApplicationController
 
     redirect_to books_path
     return
+  end
+
+  private
+
+  def book_params
+    return params.require(:book).permit(:title, :author, :description)
   end
   
 end
