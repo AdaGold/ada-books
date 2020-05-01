@@ -50,7 +50,7 @@ describe BooksController do
         post books_path, params: book_hash
       }.must_differ 'Book.count', 1
   
-      must_respond_with  :redirect
+      must_redirect_to books_path
       expect(Book.last.title).must_equal book_hash[:book][:title]
       expect(Book.last.author).must_equal book_hash[:book][:author]
       expect(Book.last.description).must_equal book_hash[:book][:description]
@@ -80,7 +80,7 @@ describe BooksController do
         patch book_path(id), params: new_book_hash
       }.wont_change "Book.count"
   
-      must_respond_with :redirect
+      must_redirect_to books_path
   
       book = Book.find_by(id: id)
       expect(book.title).must_equal new_book_hash[:book][:title]
