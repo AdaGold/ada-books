@@ -1,3 +1,13 @@
+<% if @book.errors.any? %>
+  <ul class="errors">
+    <% @book.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @book, class: 'create-book' do |f| %>
   <p>Please provide the following information to edit your book in our database:</p>
 
