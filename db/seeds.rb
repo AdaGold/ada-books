@@ -36,17 +36,20 @@ books = [
   {
     title: "Practical Object Oriented Programming in Ruby",
     description: "This book explores Object-Oriented concepts in Ruby.",
-    author_id: (Author.find_by name: "Sandi Metz").id
+    author_id: (Author.find_by name: "Sandi Metz").id,
+    publication_date: 2020
   },
   {
     title: "An Untamed State",
     description: "The novel explores the interconnected themes of race, privilege, sexual violence, family, and the immigrant experience. An Untamed State is often referred to as a fairy tale because of its structure and style, especially in reference to the opening sentence, \"Once upon a time, in a far-off land, I was kidnapped by a gang of fearless yet terrified young men with so much impossible hope beating inside their bodies it burned their very skin and strengthened their will right through their bones,\" and the author's exploration of the American dream and courtship of Mireille's parents",
-    author_id: (Author.find_by name: "Margot Lee Shetterly").id
+    author_id: (Author.find_by name: "Margot Lee Shetterly").id,
+    publication_date: 2014
   },
   {
     title: "Storm Front",
     description: "Dirty Harry Potter",
-    author_id: (Author.find_by name: "Jim Butcher").id
+    author_id: (Author.find_by name: "Jim Butcher").id,
+    publication_date: 2000
   },    
 ]
 
