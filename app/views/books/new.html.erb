@@ -1,16 +1,3 @@
 <%# in app/views/new.html.erb %>
 
-<%= form_with model: @book, class: 'create-book' do |f| %>
-  <p>Please provide the following information to save your book to our database:</p>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :author %>
-  <%= f.text_field :author %>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit "Save Book", class: "book-button" %>
-<% end %>
+<%= render partial: "form", locals: { action_name: "New" } %>
