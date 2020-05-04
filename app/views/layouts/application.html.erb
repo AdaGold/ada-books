@@ -14,8 +14,11 @@
   <body>
   <header>
     <nav>
-      <%= link_to "Home", root_path %>
-      <%= link_to "New Book", new_book_path %>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "New Book", new_book_path %></li>
+      <li><%= link_to "Authors", authors_path %></li>
+    </ul>
     </nav>
   </header>
     <%= yield %>
