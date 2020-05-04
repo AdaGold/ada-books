@@ -1,9 +1,14 @@
 <h1><%= @author.name %></h1>
 <h2>First Published <%= @author.first_published.nil? ? "Never": @author.first_published %>
 
-<h2>Books</h2>
+<h2><%= link_to "Books by #{@author.name}", author_books_path(@author.id) %></h2>
 <ul>
   <% @author.books.each do |book| %>
-    <li><%= link_to book.title, book_path(book.id) %></li>
+    <li>
+      <%= link_to book.title, book_path(book.id) %>
+    </li>
   <% end %>
 </ul>
+<%= link_to "edit", edit_author_path(@author.id) %>
+<%= link_to "delete", author_path(@author.id), method: :delete %>
+<%= link_to "New Book  by this author", new_author_book_path(@author.id) %>

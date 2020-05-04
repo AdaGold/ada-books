@@ -1,0 +1,11 @@
+<%= form_with model: @author do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :bio_url %>
+    <%= f.text_field :bio_url %>
+  </div>
+  <%= f.submit "#{action_name} Author" %>
+<% end %>

@@ -2,6 +2,8 @@
 
 <ul>
 <% @authors.each do |author| %>
-  <li><%= link_to author.name, author_path(author.id) %>
+  <li><%= link_to author.name, author_path(author.id) %> 
+    <%= link_to "edit", edit_author_path(author.id) %>
+    <%= link_to "delete", author_path(author.id), method: :delete %>
 <% end %>
 </ul>
