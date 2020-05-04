@@ -1,0 +1,9 @@
+<h1><%= @author.name %></h1>
+<h2>First Published <%= @author.first_published.nil? ? "Never": @author.first_published %>
+
+<h2>Books</h2>
+<ul>
+  <% @author.books.each do |book| %>
+    <li><%= link_to book.title, book_path(book.id) %></li>
+  <% end %>
+</ul>
