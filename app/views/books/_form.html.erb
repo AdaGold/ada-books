@@ -5,7 +5,8 @@
   <%= f.text_field :title %>
 
   <%= f.label :author %>
-  <%= f.text_field :author %>
+  <%= f.label :author %>
+    <%= f.select :author_id, Author.all.map{ |auth| [auth.name, auth.id] } %>
 
   <%= f.label :description %>
   <%= f.text_field :description %>
