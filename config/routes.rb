@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root to: 'books#index'
 
   resources :books
-  resources :authors, only: [:index, :show]
+  resources :authors do
+    resources :books, only: [:index, :new]
+  end
 
   # # Routes that operate on the book collection
   # get '/books', to: 'books#index', as: 'books'
