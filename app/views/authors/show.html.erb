@@ -1,6 +1,6 @@
 <h1><%= @author.name %></h1>
-<h2>First Published <%= @author.first_published.nil? ? "Never": @author.first_published %>
-
+<h2>First Published <%= @author.first_published.nil? ? "Never": @author.first_published %></h2>
+<p>Genres:  <%= @author.genres.map { |g| g.name }.join(", ") %>
 <h2><%= link_to "Books by #{@author.name}", author_books_path(@author.id) %></h2>
 <ul>
   <% @author.books.each do |book| %>

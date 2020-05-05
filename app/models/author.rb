@@ -12,7 +12,7 @@ class Author < ApplicationRecord
   # validates :age, numericality: { only_integer: true, greater_than: 12 }
 
   has_many :books
-  has_many :genres, -> { distinct }, through: :books
+  has_many :genres, through: :books
 
   def first_published
     books_with_year = self.books.where.not(publication_date: nil)
@@ -23,4 +23,14 @@ class Author < ApplicationRecord
       return nil
     end
   end
+
+
+  # def genres
+  #   genres = []
+  #   self.books.each do |book|
+  #     genres += book.genres
+  #   end
+  #   return genres.uniq
+  # end
+
 end
