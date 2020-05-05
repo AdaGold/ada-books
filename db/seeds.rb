@@ -27,9 +27,14 @@ authors = [
   }
 ]
 
+count = 0
 authors.each do |author|
-  Author.create(author)
+  if Author.create(author)
+    count += 1
+  end
 end
+
+puts "Created #{count} authors"
 
 
 books = [
@@ -50,6 +55,39 @@ books = [
   },    
 ]
 
+count = 0
 books.each do |book|
-  Book.create(book)
+  if Book.create(book)
+    count += 1
+  end
 end
+
+puts "Created #{count} books"
+
+genres = [
+  {
+    name: "Nonfiction"
+  },
+  {
+    name: "Fiction"
+  },  
+  {
+    name: "Coding"
+  },  
+  {
+    name: "Sci Fi"
+  },  
+  {
+    name: "Fantasy"
+  },  
+]
+
+count = 0
+genres.each do |genre|
+  if Genre.create(genre)
+    count += 1
+  end
+end
+
+puts "Created #{count} genres"
+
