@@ -21,5 +21,11 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
 
+  <div>
+    <%= f.label :genres %>
+    <%= collection_check_boxes(:book, :genre_ids, 
+         Genre.all, :id, :name) %>
+  </div>
+
   <%= f.submit "#{action_name} Book", class: "book-button" %>
 <% end %>
