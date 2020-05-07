@@ -73,7 +73,13 @@ describe BooksController do
     end
 
     it "will not create a book with invalid params" do
-        # fill this in when we implement validations next week
+      book_hash[:book][:title] = nil
+
+      expect {
+        post books_path, params: book_hash
+      }.must_differ "Book.count", 0
+
+      must_respond_with :bad_request
     end
   end
 
