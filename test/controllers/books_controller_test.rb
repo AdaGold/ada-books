@@ -45,11 +45,16 @@ describe BooksController do
   end
 
   describe "create" do
+
+    let (:sandi_metz) {
+      Author.create(name: "Sandi Metz")
+    }
+
     it "can create a book" do
       book_hash = {
         book: {
           title: "Practical Object Oriented Programming in Ruby",
-          author: "Sandi Metz",
+          author_id: sandi_metz.id,
           description: 'A look at how to design object-oriented systems'
         }
       }
@@ -61,7 +66,7 @@ describe BooksController do
       must_respond_with  :redirect
       must_redirect_to root_path
       expect(Book.last.title).must_equal book_hash[:book][:title]
-      expect(Book.last.author).must_equal book_hash[:book][:author]
+      expect(Book.last.author.name).must_equal sandi_metz.name
       expect(Book.last.description).must_equal book_hash[:book][:description]
     end
 
@@ -71,14 +76,24 @@ describe BooksController do
   end
 
   describe "update" do
+
     before do
-      Book.create(title: "We're all wonders", author: " R.J. Palacio", description: "Good kids book")
+      Book.create(title: "We're all wonders", author_id: rj_palacio.id, description: "Good kids book")
     end
+
+    let (:rj_palacio) {
+      Author.create(name: "R.J. Palacio")
+    }
+
+    let (:madeleine_lengle) {
+      Author.create(name: "Madeleine L'Engle")
+    }
+
     let (:new_book_hash) {
       {
         book: {
           title: "A Wrinkle in Time",
-          author: "Madeleine L'Engle",
+          author_id: madeleine_lengle.id,
           description: "A fabulous adventure",
         },
       }
@@ -93,7 +108,7 @@ describe BooksController do
   
       book = Book.find_by(id: id)
       expect(book.title).must_equal new_book_hash[:book][:title]
-      expect(book.author).must_equal new_book_hash[:book][:author]
+      expect(book.author.name).must_equal madeleine_lengle.name
       expect(book.description).must_equal new_book_hash[:book][:description]
     end
   
