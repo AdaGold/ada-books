@@ -131,7 +131,7 @@ describe BooksController do
     end
   
     it "will not update if the params are invalid" do
-      new_book_hash[:title] = nil
+      new_book_hash[:book][:title] = nil
       book = Book.first
 
       expect {
@@ -139,7 +139,7 @@ describe BooksController do
       }.wont_change "Book.count"
 
       book.reload # refresh the book from the database
-
+      must_respond_with :bad_request
       expect(book.title).wont_be_nil
     end
   end
