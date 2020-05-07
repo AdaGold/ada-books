@@ -24,7 +24,7 @@ class BooksController < ApplicationController
       redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
-      render :new # show the new book form view again
+      render :new, status: :bad_request # show the new book form view again
       return
     end
   end
@@ -40,6 +40,7 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find_by(id: params[:id])
+
     if @book.nil?
       head :not_found
       return
@@ -47,7 +48,7 @@ class BooksController < ApplicationController
       redirect_to books_path # go to the index so we can see the book in the list
       return
     else # save failed :(
-      render :edit # show the new book form view again
+      render :edit, status: :bad_request # show the new book form view again
       return
     end
   end
