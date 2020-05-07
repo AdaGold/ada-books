@@ -5,7 +5,7 @@ describe Book do
   describe 'validations' do
     before do
       # Arrange
-      author = Author.new(name: 'test author')
+      author = authors(:metz)
       @book = Book.new(title: 'test book', author: author)
     end
 
@@ -35,7 +35,7 @@ describe Book do
       # One thing we can do is create a new book unique_book,
       # and modify @book so it becomes invalid
       # to follow the pattern of invalidating @book
-      unique_book = Book.create!(title: 'original book', author: Author.new(name: 'test author'))
+      unique_book = Book.create!(title: 'original book', author: authors(:metz))
       @book.title = unique_book.title
 
       # Act
@@ -49,28 +49,15 @@ describe Book do
   end
 
   describe 'relations' do
-    it 'can set the author through "author"' do
-      # Create two models
-      author = Author.create!(name: "test author")
-      book = Book.new(title: "test book")
-
-      # Make the models relate to one another
-      book.author = author
-
-      # author_id should have changed accordingly
-      expect(book.author_id).must_equal author.id
+    it "has an author" do
+      book = books(:poodr)
+      expect(book.author).must_equal authors(:metz)
     end
 
-    it 'can set the author through "author_id"' do
-      # Create two models
-      author = Author.create!(name: "test author")
+    it "can set the author" do
       book = Book.new(title: "test book")
-
-      # Make the models relate to one another
-      book.author_id = author.id
-
-      # author should have changed accordingly
-      expect(book.author).must_equal author
+      book.author = authors(:metz)
+      expect(book.author_id).must_equal authors(:metz).id
     end
   end
 

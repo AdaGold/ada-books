@@ -1,0 +1,15 @@
+kindred:
+  title: Kindred
+  author: butler
+  description: A good sci-fi book
+  publication_date: 1979
+parable:
+  title: Parable of the Sower
+  author: butler
+  description: Fire drugs?
+  publication_date: 1993
+poodr:
+  title: Practical Object Oriented Design in Ruby
+  author: metz
+  description: A good book on programming
+  publication_date: 2012

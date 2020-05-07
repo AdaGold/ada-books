@@ -2,7 +2,7 @@ require "test_helper"
 
 describe AuthorsController do
   before do
-    @author = Author.create(name: "R.J. Palacio")
+    @author = authors(:metz)
   end
 
   it "must get index" do

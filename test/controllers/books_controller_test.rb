@@ -26,7 +26,7 @@ describe BooksController do
 
   describe "show" do
     before do
-      @book = Book.create(title: "hello world")
+      @book = Book.first
     end
 
     it "will get show for valid ids" do
@@ -69,7 +69,7 @@ describe BooksController do
   describe "create" do
 
     let (:sandi_metz) {
-      Author.create(name: "Sandi Metz")
+      authors(:metz)
     }
 
     let (:book_hash) {
@@ -107,23 +107,11 @@ describe BooksController do
 
   describe "update" do
 
-    before do
-      Book.create(title: "We're all wonders", author_id: rj_palacio.id, description: "Good kids book")
-    end
-
-    let (:rj_palacio) {
-      Author.create(name: "R.J. Palacio")
-    }
-
-    let (:madeleine_lengle) {
-      Author.create(name: "Madeleine L'Engle")
-    }
-
     let (:new_book_hash) {
       {
         book: {
           title: "A Wrinkle in Time",
-          author_id: madeleine_lengle.id,
+          author_id: authors(:madeleine_lengle).id,
           description: "A fabulous adventure",
         },
       }
@@ -138,7 +126,7 @@ describe BooksController do
   
       book = Book.find_by(id: id)
       expect(book.title).must_equal new_book_hash[:book][:title]
-      expect(book.author.name).must_equal madeleine_lengle.name
+      expect(book.author.name).must_equal authors(:madeleine_lengle).name
       expect(book.description).must_equal new_book_hash[:book][:description]
     end
   
