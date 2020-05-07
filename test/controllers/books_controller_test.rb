@@ -123,7 +123,16 @@ describe BooksController do
     end
   
     it "will not update if the params are invalid" do
-      # This test will be examined when we cover validations next week
+      new_book_hash[:title] = nil
+      book = Book.first
+
+      expect {
+        patch book_path(book.id), params: new_book_hash
+      }.wont_change "Book.count"
+
+      book.reload # refresh the book from the database
+
+      expect(book.title).wont_be_nil
     end
   end
 end
