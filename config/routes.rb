@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :new]
   end
 
+  get "/login", to: "users#login_form", as: "login"
+  post "/login", to: "users#login"
+  post "/logout", to: "users#logout", as: "logout"
+  get "/users/current", to: "users#current", as: "current_user"
+
   # # Routes that operate on the book collection
   # get '/books', to: 'books#index', as: 'books'
   # get '/books/new', to: 'books#new', as: 'new_book'
