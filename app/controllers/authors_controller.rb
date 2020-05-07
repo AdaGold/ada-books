@@ -21,32 +21,32 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    author = Author.new(author_params)
+    @author = Author.new(author_params)
 
-    if author.save
+    if @author.save
       flash[:success] = "Author added successfully"
       redirect_to authors_path
       return
     else
       flash.now[:error] = "Something happened. Author not added."
-      render :new
+      render :new, status: :bad_request
       return
     end
   end
   
   def update
-    author = Author.find_by(id: params[:id])
+    @author = Author.find_by(id: params[:id])
 
-    if author.nil?
+    if @author.nil?
       redirect_to authors_path
     else
-      if author.update(author_params)
+      if @author.update(author_params)
         flash[:success] = "Author updated successfully"
-        redirect_to author_path(author.id)
+        redirect_to author_path(@author.id)
         return
       else
         flash.now[:error] = "Something happened. Author not updated."
-        render :edit
+        render :edit, status: :bad_request
         return
       end
     end
