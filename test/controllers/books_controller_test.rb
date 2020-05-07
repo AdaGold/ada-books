@@ -50,15 +50,17 @@ describe BooksController do
       Author.create(name: "Sandi Metz")
     }
 
-    it "can create a book" do
-      book_hash = {
+    let (:book_hash) {
+      {
         book: {
           title: "Practical Object Oriented Programming in Ruby",
           author_id: sandi_metz.id,
           description: 'A look at how to design object-oriented systems'
         }
       }
+    }
 
+    it "can create a book" do
       expect {
         post books_path, params: book_hash
       }.must_differ 'Book.count', 1
