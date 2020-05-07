@@ -24,10 +24,12 @@ class AuthorsController < ApplicationController
     author = Author.new(author_params)
 
     if author.save
+      flash[:success] = "Author added successfully"
       redirect_to authors_path
       return
     else
-      render :new, :bad_request
+      flash.now[:error] = "Something happened. Author not added."
+      render :new
       return
     end
   end
@@ -39,10 +41,12 @@ class AuthorsController < ApplicationController
       redirect_to authors_path
     else
       if author.update(author_params)
+        flash[:success] = "Author updated successfully"
         redirect_to author_path(author.id)
         return
       else
-        render :edit, :bad_request
+        flash.now[:error] = "Something happened. Author not updated."
+        render :edit
         return
       end
     end

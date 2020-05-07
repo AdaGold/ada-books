@@ -1,3 +1,7 @@
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 @import "**/*";
+
+.flash-msg__section {
+  background-color: palegoldenrod;
+}

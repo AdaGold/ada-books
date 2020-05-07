@@ -36,9 +36,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params) #instantiate a new book
     if @book.save # save returns true if the database insert succeeds
+      flash[:success] = "Book added successfully"
       redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
+      flash.now[:error] = "Something happened. Book not added."
       render :new, status: :bad_request # show the new book form view again
       return
     end
@@ -60,9 +62,11 @@ class BooksController < ApplicationController
       head :not_found
       return
     elsif @book.update(book_params)
+      flash[:success] = "Book updated successfully"
       redirect_to books_path # go to the index so we can see the book in the list
       return
     else # save failed :(
+      flash.now[:error] = "Something happened. Book not updated."
       render :edit, status: :bad_request # show the new book form view again
       return
     end
