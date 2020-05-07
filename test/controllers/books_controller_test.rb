@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe BooksController do
+  before do
+    Author.create(name: "JK Rowling")
+  end
+
   describe "index" do
     it "should get index" do
       get "/books"
@@ -11,8 +15,12 @@ describe BooksController do
       # must_respond_with :not_found
 
       # must_redirect_to "/books"
+    end
 
+    it "can get author_books_path" do
+      get author_books_path(Author.first.id)
 
+      must_respond_with :success
     end
   end
 
@@ -41,6 +49,20 @@ describe BooksController do
   
       # Assert
       must_respond_with :not_found
+    end
+  end
+
+  describe "new" do
+    it "can get the new_book_path" do
+      get new_book_path
+
+      must_respond_with :success
+    end
+
+    it "can get the new_author_book_path" do
+      get new_author_book_path(Author.first.id)
+
+      must_respond_with :success
     end
   end
 
