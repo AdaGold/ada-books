@@ -1,20 +1,31 @@
 <div>
   <h1><%= @book.title %></h1>
-  <h2>By: <%= @book.author.name %></h2> 
-  <h2>Genres</h2>
+  <span>By: <%= @book.author.name %></span>
+  <h3>Genres</h3>
   <ul>
     <% @book.genres.each do |genre| %>
       <li><%= genre.name %></li>
     <% end %>
   </ul>
 
-  <span>
-    Added to this site <%= readable_date(@book.created_at) %>
-  </span>
 
+  <section>
+    <h2>About This Book</h2>
+    <p>
+      <%= @book.description %>
+    </p>
+    <p>
+      Added to this site <%= readable_date(@book.created_at) %>
+    </p>
+  </section>
 
-  <%= link_to "Edit", edit_book_path(@book) %>
-  <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}%>
+  <section>
+    <h2>Manage This Book</h2>
+    <ul>
+      <li><%= link_to "Edit", edit_book_path(@book) %></li>
+      <li><%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}%></li>
+    </ul>
+  </section>
 </div>
 
 
