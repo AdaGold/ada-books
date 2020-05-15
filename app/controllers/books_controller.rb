@@ -1,6 +1,10 @@
 
 class BooksController < ApplicationController
+
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
+
   def index
+    puts "Use is #{@current_user}"
     if params[:author_id]
       # This is the nested route, /author/:author_id/books
       author = Author.find_by(id: params[:author_id])
@@ -13,8 +17,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    book_id = params[:id]
-    @book = Book.find_by(id: book_id)
     if @book.nil?
       head :not_found
       return
@@ -47,8 +49,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find_by(id: params[:id])
-
     if @book.nil?
       head :not_found
       return
@@ -56,8 +56,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find_by(id: params[:id])
-
     if @book.nil?
       head :not_found
       return
@@ -73,9 +71,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    book_id = params[:id]
-    @book = Book.find_by(id: book_id)
-
     if @book.nil?
       head :not_found
       return
@@ -91,6 +86,10 @@ class BooksController < ApplicationController
 
   def book_params
     return params.require(:book).permit(:title, :author_id, :description, genre_ids: [])
+  end
+
+  def find_book
+    @book = Book.find_by(id: params[:id])
   end
   
 end

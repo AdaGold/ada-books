@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_action :require_login, except: [:current_user]
+
   def login_form
     @user = User.new
   end
