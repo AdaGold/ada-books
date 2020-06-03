@@ -2,6 +2,8 @@
 Rails.application.routes.draw do
   # verb 'path', to: 'controller#action'
 
+  get "/auth/github", as: "github_login"
+
   root to: 'books#index'
 
   resources :books
