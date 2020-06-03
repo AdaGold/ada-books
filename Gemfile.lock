@@ -92,6 +92,10 @@ GEM
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.9)
     debug_inspector (0.0.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     execjs (2.7.0)
     faraday (1.0.1)
@@ -292,6 +296,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   debase (>= 0.2.4.1)
+  dotenv-rails
   guard
   guard-minitest
   jbuilder (~> 2.7)
