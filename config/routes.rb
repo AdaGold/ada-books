@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # verb 'path', to: 'controller#action'
 
   get "/auth/github", as: "github_login"
+  get "/auth/:provider/callback", to: "users#create"
 
   root to: 'books#index'
 
