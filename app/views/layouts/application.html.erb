@@ -19,7 +19,7 @@
       <li><%= link_to "New Book", new_book_path %></li>
       <li><%= link_to "New Author", new_author_path  %></li>
       <li><%= link_to "Authors", authors_path %></li>
-      <% if session[:user_id].nil %>
+      <% if session[:user_id].nil? %>
         <li><%= link_to "Log In with Github", github_login_path %></li>
       <% else %>
         <li><%= link_to "Log Out", logout_path, method: :post %></li>
