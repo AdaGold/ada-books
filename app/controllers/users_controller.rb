@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def create
+    auth_hash = request.env["omniauth.auth"]
+    binding.pry
+  end
+
   def login
     username = params[:user][:username]
     user = User.find_by(username: username)
