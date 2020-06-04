@@ -2,6 +2,12 @@
 Rails.application.routes.draw do
   # verb 'path', to: 'controller#action'
 
+  # Omniauth Login Route
+  get "/auth/github", as: "github_login"
+
+  # Omniauth Github callback route
+  get "/auth/:provider/callback", to: "users#create", as: "omniauth_callback"
+
   root to: 'books#index'
 
   resources :books
@@ -9,8 +15,8 @@ Rails.application.routes.draw do
     resources :books, only: [:index, :new]
   end
 
-  get "/login", to: "users#login_form", as: "login"
-  post "/login", to: "users#login"
+  # get "/login", to: "users#login_form", as: "login"
+  # post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
