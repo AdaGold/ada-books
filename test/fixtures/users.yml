@@ -1,2 +1,13 @@
-wu:
-  username: Alice Wu
+ada:
+  provider: github
+  uid: 12345
+  email: ada@adadev.org
+  username: ada
+  avatar: https://avatars2.githubusercontent.com/u/1177416?s=60&v=4
+
+dee:
+  provider: github
+  uid: 111
+  email: dee@delrosario.name
+  username: tildeee
+  avatar:  https://avatars2.githubusercontent.com/u/1177416?s=60&v=4

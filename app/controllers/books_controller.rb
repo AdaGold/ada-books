@@ -7,7 +7,6 @@ class BooksController < ApplicationController
 
 
   def index
-    puts "Use is #{@current_user}"
     if params[:author_id]
       # This is the nested route, /author/:author_id/books
       author = Author.find_by(id: params[:author_id])
