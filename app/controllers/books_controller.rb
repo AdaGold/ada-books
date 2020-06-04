@@ -2,6 +2,9 @@
 class BooksController < ApplicationController
 
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index]
+  before_action :current_user, only: [:index]
+
 
   def index
     puts "Use is #{@current_user}"
