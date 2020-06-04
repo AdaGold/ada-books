@@ -12,14 +12,14 @@ class UsersController < ApplicationController
     user = User.find_by(uid: auth_hash[:uid], provider: "github")
     if user
       # User was found in the database
-      flash[:success] = "Logged in as returning user #{user.name}"
+      flash[:success] = "Logged in as returning user #{user.username}"
     else
       # User doesn't match anything in the DB
       # Attempt to create a new user
       user = User.build_from_github(auth_hash)
 
       if user.save
-        flash[:success] = "Logged in as new user #{user.name}"
+        flash[:success] = "Logged in as new user #{user.username}"
       else
         # Couldn't save the user for some reason. If we
         # hit this it probably means there's a bug with the
