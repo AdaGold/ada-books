@@ -2,24 +2,27 @@ class UsersController < ApplicationController
 
   skip_before_action :require_login, except: [:current_user]
 
-  def login_form
-    @user = User.new
-  end
+  def create
+    auth_hash = request.env["omniauth.auth"]
+    user = User.find_by(uid: auth_hash[:uid],
+                        provider: params[:provider])
+    
+    if user # User exists
+      flash[:notice] = "Existing user #{user.username} is logged in."
 
-  def login
-    username = params[:user][:username]
-    user = User.find_by(username: username)
-    if user
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as returning user #{username}"
-    else
-      user = User.create(username: username)
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{username}"
+    else # User doesn't exist yet (new user)
+
+      user = User.build_from_github(auth_hash)
+      if user.save
+        flash[:success] = "Logged in as new user #{user.username}"
+      else
+        flash[:error] = "Could not create user account  #{user.errors.messages}"
+        return redirect_to root_path
+      end
     end
 
+    session[:user_id] = user.id
     redirect_to root_path
-    return
   end
 
   def logout
