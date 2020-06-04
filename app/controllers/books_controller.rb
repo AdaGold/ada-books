@@ -2,9 +2,11 @@
 class BooksController < ApplicationController
 
   before_action :find_book, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index]
+
 
   def index
-    puts "Use is #{@current_user}"
+    puts "User is #{@current_user ? @current_user : "Guest User"}"
     if params[:author_id]
       # This is the nested route, /author/:author_id/books
       author = Author.find_by(id: params[:author_id])

@@ -2,10 +2,6 @@ class UsersController < ApplicationController
 
   skip_before_action :require_login, except: [:current_user]
 
-  def login_form
-    @user = User.new
-  end
-
   def create
     auth_hash = request.env["omniauth.auth"]
     # Try to find the user
