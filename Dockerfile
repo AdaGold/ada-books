@@ -15,8 +15,6 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
 
 # We copy these files from our current application to the /app container
 COPY Gemfile Gemfile.lock ./
-COPY package.json .
-RUN yarn
 
 # We install all the dependencies
 # Install Bundler Version
@@ -24,6 +22,8 @@ RUN gem install bundler:2.1.4
 RUN bundle install
 # We copy all the files from our current application to the /app container
 COPY . .
+RUN yarn
+
 
 # We expose the port
 EXPOSE 3000
