@@ -14,6 +14,15 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: my_db_name
+#   username: root
+#   password: my_password
+#   host: ENV[""]
+#   port: 3306
+  
 default: &default
   adapter: postgresql
   encoding: unicode
