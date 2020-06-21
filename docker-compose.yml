@@ -16,3 +16,5 @@ services:
       - db
     environment:
       PG_PASSWORD: password
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET}
