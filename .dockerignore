@@ -1,0 +1,16 @@
+.git
+.gitignore
+.rbenv-vars
+README.md
+.byebug_history
+log/*
+tmp/*
+public/system
+spec/tmp
+.bundle
+.ruby-version
+.ruby-gemset
+.bundle/*
+.capistrano/*
+.bundle/*
+.elasticbeanstalk/*
