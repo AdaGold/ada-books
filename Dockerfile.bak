@@ -1,0 +1,30 @@
+# Start off with a general Ruby 2.6 Container
+ARG RUBY_VERSION=2.6
+ARG BUNDLER_VERSION=2.1.4
+FROM ruby:$RUBY_VERSION
+
+# When deploying do so in noninteractive mode
+ARG DEBIAN_FRONTEND=noninteractive
+
+
+RUN apt-get update -qq 
+RUN apt-get install -y build-essential nodejs postgresql-client nodejs yarn locales git netcat vim sudo
+RUN gem update --system
+RUN gem install bundler -v $BUNDLER_VERSION
+
+ENV APP_FOLDER /app
+RUN mkdir $APP_FOLDER
+WORKDIR $APP_FOLDER
+COPY Gemfile $APP_FOLDER/Gemfile
+COPY Gemfile.lock $APP_FOLDER/Gemfile.lock
+RUN bundle install
+COPY . $APP_FOLDER
+
+# Add a script to be executed every time the container starts.
+COPY ./entrypoint.sh $APP_FOLDER
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
+EXPOSE 3000
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
