@@ -13,4 +13,3 @@ spec/tmp
 .bundle/*
 .capistrano/*
 .bundle/*
-.elasticbeanstalk/*
