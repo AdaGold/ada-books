@@ -7,11 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: pets_development
+  database: books_development
 
 test:
   <<: *default
-  database: pets_test
+  database: books_test
 
 
   production:
@@ -22,4 +22,4 @@ test:
     username: "books"
     password: "password"
     database: "books"
-    host:   "/cloudsql/[YOUR_INSTANCE_CONNECTION_NAME]"
+    host:   "/cloudsql/manifest-chain-281123:us-central1:rails-database-instance"
