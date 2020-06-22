@@ -14,12 +14,12 @@ test:
   database: books_test
 
 
-  production:
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    timeout: 5000
-    username: "books"
-    password: "password"
-    database: "books"
-    host:   "/cloudsql/manifest-chain-281123:us-central1:rails-database-instance"
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  username: "books"
+  password: "password"
+  database: "books"
+  host:   "/cloudsql/manifest-chain-281123:us-central1:rails-database-instance"
