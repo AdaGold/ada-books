@@ -79,7 +79,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: ada_books_production
-  username: ada_books
-  password: <%= ENV['ADA_BOOKS_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  username: "books"
+  password: "password"
+  database: "books"
+  host:   "/cloudsql/livecode-ada-books:us-central1:livecode-ada-books"
