@@ -1,6 +1,6 @@
 <div>
   <h1><%= @book.title %></h1>
-  <h2>By: <%= @book.author %></h2> 
+  <h2>By: <%= @book.author.name %></h2> 
   <%= link_to "Edit", edit_book_path(@book) %>
   <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}%>
 </div>
