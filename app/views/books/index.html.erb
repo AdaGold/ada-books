@@ -5,7 +5,7 @@
   <% @books.each do |book|  %>
     <li>
       <%= link_to book.title, book_path(book) %>
-      By: <%= book.author %> <%= link_to "Edit Book", edit_book_path(book) %> <%= link_to "Delete Book", book_path(book), method: :delete, data: {confirm: "Are you sure?"}%>
+      By DEVIN HA HA JA: <%= book.author %> <%= link_to "Edit Book", edit_book_path(book) %> <%= link_to "Delete Book", book_path(book), method: :delete, data: {confirm: "Are you sure?"}%>
     </li>
   <% end %>
 </ul>

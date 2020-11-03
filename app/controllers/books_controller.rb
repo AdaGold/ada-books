@@ -20,7 +20,7 @@ class BooksController < ApplicationController
   # in app/controllers/books_controller.rb
   def create
     @book = Book.new(book_params) #instantiate a new book
-    if @book.save # save returns true if the database insert succeeds
+    if @book.save # save returns true __if__ the database insert succeeds
       redirect_to root_path # go to the index so we can see the book in the list
       return
     else # save failed :(
